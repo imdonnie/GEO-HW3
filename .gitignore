@@ -1,0 +1,10 @@
+/.history
+/data/*.csv
+/data/*.txt
+*.history
+**/*.csv
+**/*.txt
+**/*.xlsx
+.vs
+/data/*.rar
+../**

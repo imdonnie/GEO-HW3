@@ -9,11 +9,12 @@ if __name__ == "__main__":
     prefix = 'https://dev.virtualearth.net/REST/v1/Imagery/Map/'
     imagerySet = 'AerialWithLabels'
     mapArea = '42.049475,-87.678077,42.060154,-87.668861'
-    mapSize = '1500,2000'
+    mapSize = '4000,4000'
     bingKey = 'AkgDxxiFx5q-IupXs55G9S8mRKza78MbGjexT2xx_Et_qpBZ0Wjp86jS15EgdY55'
-    imgUrl = '{0}{1}?mapArea={2}&mapSize={3}&key={4}&{5}'.format(prefix, imagerySet, mapArea, mapSize, bingKey, 0)
+    imgUrl = '{0}{1}?mapArea={2}&mapSize={3}&key={4}&mapMetadata={5}'.format(prefix, imagerySet, mapArea, mapSize, bingKey, 0)
     print(imgUrl)
-    metaUrl = '{0}{1}?mapArea={2}&mapSize={3}&key={4}&{5}'.format(prefix, imagerySet, mapArea, mapSize, bingKey, 1)
+    metaUrl = '{0}{1}?mapArea={2}&mapSize={3}&key={4}&mapMetadata={5}'.format(prefix, imagerySet, mapArea, mapSize, bingKey, 1)
+    print(metaUrl)
     response = requests.get(url=imgUrl, headers=headers)
     with open('{0}.jpg'.format(imagerySet), 'wb') as f:
         f.write(response.content)

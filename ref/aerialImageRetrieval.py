@@ -1,6 +1,7 @@
 import sys, io, os
 from urllib import request
 from PIL import Image
+Image.MAX_IMAGE_PIXELS = 933120000
 import os
 from math import cos, sin, pi, log, atan, exp, floor
 from itertools import chain

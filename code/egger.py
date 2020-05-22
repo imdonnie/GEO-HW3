@@ -52,32 +52,39 @@ for way in result.ways:
         # for node in way.nodes:
         #     print("    Lat: %f, Lon: %f" % (node.lat, node.lon))
 
-# background_path = './code/background_1.jpeg'
-# background = plt.imread(background_path)
+background_path = './code/background_1.jpeg'
+background = plt.imread(background_path)
 
-# fig, ax = plt.subplots(figsize=(8, 5))
-# ax.set_title('Plotting')
-# ax.set_xlim(BBox[0], BBox[1])
-# ax.set_ylim(BBox[2], BBox[3])
-# ax.imshow(background, zorder=0, extent=BBox, aspect='equal')
+fig, ax = plt.subplots(figsize=(8, 5))
+ax.set_title('Plotting')
+ax.set_xlim(BBox[0], BBox[1])
+ax.set_ylim(BBox[2], BBox[3])
+ax.imshow(background, zorder=0, extent=BBox, aspect='equal')
 
-# # L = len(result.ways)
-# # pbar = tqdm.tqdm(L)
-# for way in result.ways:
-#     # pbar.update()
-#     x, y = [], []
-#     for index, node in enumerate(way.nodes[:-1]):
-#         y.append(node.lat)
-#         x.append(node.lon)
-#     color = [np.random.randint(1000)/1000 for i in range(3)]
-#     # markerfacecolor=color,  marker='H'
-#     ax.plot(x, y, c=color, alpha=0.8, linewidth=0.1,  marker='o', markersize=0.3, markeredgewidth=0)
-#     # ax.text(x[0], y[0], way.tags.get("name", "n/a"))  
+font = {'family' : 'normal',
+        'weight' : 'bold',
+        'size'   : 22}
+# L = len(result.ways)
+# pbar = tqdm.tqdm(L)
+for way in result.ways:
+    # pbar.update()
+    x, y = [], []
+    for index, node in enumerate(way.nodes[:-1]):
+        y.append(node.lat)
+        x.append(node.lon)
+    color = [np.random.randint(1000)/1000 for i in range(3)]
+    # markerfacecolor=color,  marker='H'
+    ax.plot(x, y, c=color, alpha=0.8, linewidth=0.1,  marker='o', markersize=0.3, markeredgewidth=0)
+    if way.tags.get("name", "n/a") is 'n/a':
+        pass
+    else:
+        length = len(x)
+        ax.text(x[length//2], y[length//2], way.tags.get("name", "n/a"),c=color,alpha=1,size=1,stretch=1)
 
-# fig = plt.gcf()
-# # plt.show()
-# # plt.plot()
+fig = plt.gcf()
+# plt.show()
+# plt.plot()
 
-# # plt.rcParams['figure.figsize'] = (8.0, 4.0)
-# plt.rcParams['savefig.dpi'] = 2000
-# fig.savefig('matched_1.jpg')
+# plt.rcParams['figure.figsize'] = (8.0, 4.0)
+plt.rcParams['savefig.dpi'] = 2000
+fig.savefig('matched_1.jpg')
